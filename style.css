@@ -1,0 +1,266 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+/* 2. Global Styles & Color Palette */
+:root {
+    --dark-blue-gray: #2C3E50; /* For headers, footers, and main headings */
+    --calm-blue: #3498DB;      /* For links and interactive elements */
+    --silver: #BDC3C7;         /* A lighter gray for accents or secondary text */
+    --light-gray-bg: #F0F4F8; /* The fallback background color */
+    --white: #FFFFFF;          /* The background for our main content sections */
+    --body-text-color: #5D6D7E;/* A soft gray for paragraph text */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--body-text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    /* The Flowing Ether background */
+    background: linear-gradient(-45deg, #F0F4F8, #dde4eb, #caced1, #F0F4F8);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+}
+
+/* 3. Header, Footer, & Navigation */
+header {
+    background-image: url('header-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    padding: 0;
+    border-top: 8px solid var(--dark-blue-gray);
+    border-bottom: 8px solid var(--dark-blue-gray);
+}
+
+nav {
+    background-color: var(--white);
+    padding: 1rem;
+    border-bottom: 1px solid #dee4e9;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark-blue-gray);
+    font-weight: 700;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--calm-blue);
+    border-bottom-color: var(--calm-blue);
+}
+
+footer {
+    background-color: var(--dark-blue-gray);
+    color: var(--light-gray-bg);
+    padding: 1.5rem;
+    font-size: 0.9rem;
+}
+
+footer em {
+    color: var(--silver);
+}
+
+/* 4. Main Content & Sections */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+section {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+section h2, section h3 {
+    color: var(--dark-blue-gray);
+    margin-top: 0;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+section h3 {
+    font-size: 1.5rem;
+}
+
+/* 5. Article Page Styles */
+.article-container {
+    padding: 0;
+}
+
+.page-title {
+    text-align: center;
+    border-bottom: 1px solid #dee4e9;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+article {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+}
+
+article h3 {
+    margin-top: 0;
+    color: var(--dark-blue-gray);
+    font-size: 1.8rem;
+}
+
+.meta-data {
+    font-size: 0.9rem;
+    color: var(--silver);
+    font-style: italic;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+}
+
+article p {
+    line-height: 1.7;
+}
+
+/* 6. Animations & Interactive Sparkle */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main section, 
+main article {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* --- 9. Flowing Wave Background --- */
+
+.wave-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15vh;
+    z-index: -1; /* Puts the waves behind all other content */
+}
+
+.waves {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    margin-bottom: -7px; /* Fix for slight gap */
+}
+
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s; /* Slowest wave on top */
+}
+
+.parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s; /* Fastest wave in the back */
+}
+
+/* This is the animation that moves the waves horizontally */
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px,0,0);
+    }
+    100% { 
+        transform: translate3d(85px,0,0);
+    }
+}
+
+/* REPLACE the old .article-image rule with this one */
+.article-image {
+    width: 100%;
+    max-width: 600px;
+    display: inline-block; /* Changed from block */
+    vertical-align: middle;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin: 0; /* Removed margin */
+}
+
+/* --- 11. Figure and Caption Styling --- */
+
+/* This replaces the old .image-wrapper for better semantics */
+.article-figure {
+    text-align: center;
+    margin: 2rem 0; 
+}
+
+/* This styles the visible caption text below the image */
+figcaption {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--body-text-color);
+}
